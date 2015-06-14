@@ -225,7 +225,20 @@ public class Interfaz
         }
         
         if(e.getSource()==ayudatext){
-        
+            JDialog  dialog;
+            JFrame credi;
+            credi=new JFrame();
+            dialog = new JDialog(credi, "", true);
+            dialog.setTitle("Acerca de");
+            JTextArea label = new JTextArea("Este Programa fue Diseñado por :\n" +
+                    " Rodrigo Varas López\n" +
+                    "Contacto: rodrigovaraslopez@gmail.com\n" +
+            "FreeWord 0.1\n");
+            label.setEditable(false);
+            Container contentPane = dialog.getContentPane();
+            contentPane.add(label, BorderLayout.CENTER);
+            dialog.setSize(new Dimension(300, 150));
+            dialog.setVisible(true);
         }
         
         if(e.getSource()== negrita && negrita.isSelected()){
