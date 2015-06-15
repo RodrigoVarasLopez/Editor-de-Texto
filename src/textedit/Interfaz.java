@@ -47,6 +47,7 @@ public class Interfaz
     JTextArea textarea= new JTextArea();
     JTextArea textarea2 = new JTextArea();
     JScrollPane scrollPane;
+    JScrollPane scrollPane1;
     JDesktopPane d = new JDesktopPane();
     JInternalFrame frmin =new JInternalFrame();
     
@@ -117,16 +118,13 @@ public class Interfaz
         ayudatext.addActionListener(this);
         ayuda.add(ayudatext);
         barramenu.add(ayuda);
-     
+               
+        textarea = new JTextArea(20, 40);
+        scrollPane = new JScrollPane(textarea);
+        scrollPane.setLocation(0,60);
+        scrollPane.setSize(300, 220);
         
-       //textarea = new JTextArea();
-       // scrollPane = new JScrollPane(textarea);
         
-        textarea.setLocation(0,60);
-        textarea.setSize(300, 200);
-        
-        //scrollPane.setLocation(0,60);
-        //scrollPane.setSize(620, 520);
         
         barramenu.setLocation(0, 0);
         barramenu.setSize(640, 20);
@@ -144,17 +142,14 @@ public class Interfaz
        frmin.setVisible(true);
        frmin.setResizable(true);
        frmin.setMaximizable(true);
-       
-       frmin.add(textarea);
+       frmin.setClosable(rootPaneCheckingEnabled);
+       frmin.add(scrollPane);
        frmin.addFocusListener(this);
        
        d.add(frmin);
        add(d);
        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        
-        //getContentPane().add(scrollPane);
-        //pack();
-        
+              
         setSize(620,580);
         setVisible(true);
         setTitle("TextEdit");
@@ -167,17 +162,19 @@ public class Interfaz
         if(e.getSource()==cerrar){
          System.exit(0);   
         }
-        if(e.getSource()==nuevo){
-           
-           textarea = new JTextArea();
-           textarea.setLocation(0,60);
-           textarea.setSize(300, 200);
+        if(e.getSource()==nuevo){          
+            
+           textarea = new JTextArea(20,40); 
+           scrollPane = new JScrollPane(textarea);
+           scrollPane.setLocation(0,60);
+           scrollPane.setSize(300, 220);
            JInternalFrame frmin1 =new JInternalFrame();
            frmin1.setSize(300,200);
            frmin1.setVisible(true);
            frmin1.setResizable(true);
            frmin1.setMaximizable(true);
-           frmin1.add(textarea);
+           frmin1.setClosable(rootPaneCheckingEnabled);
+           frmin1.add(scrollPane);
            d.add(frmin1);
            this.setExtendedState(JFrame.MAXIMIZED_BOTH);
            
@@ -195,7 +192,6 @@ public class Interfaz
                     textarea.append(linea+"\n");
                     linea= reader.readLine();
                 }
- 
             }catch (Exception ex) {
  
             }
@@ -235,8 +231,7 @@ public class Interfaz
             dialog.setTitle("Acerca de");
             JTextArea label = new JTextArea("Este Programa fue Diseñado por :\n" +
                     " Rodrigo Varas López\n" +
-                    "Contacto: rodrigovaraslopez@gmail.com\n" +
-            "FreeWord 0.1\n");
+                    "Contacto: rodrigovaraslopez@gmail.com\n");
             label.setEditable(false);
             Container contentPane = dialog.getContentPane();
             contentPane.add(label, BorderLayout.CENTER);
