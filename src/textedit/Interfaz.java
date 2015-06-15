@@ -50,7 +50,7 @@ public class Interfaz
     JDesktopPane d = new JDesktopPane();
     JInternalFrame frmin =new JInternalFrame();
     
-
+    
     private void initInterface()
     {
         setLayout(null);
@@ -164,6 +164,9 @@ public class Interfaz
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource()==cerrar){
+         System.exit(0);   
+        }
         if(e.getSource()==nuevo){
            
            textarea = new JTextArea();
